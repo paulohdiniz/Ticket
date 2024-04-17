@@ -46,56 +46,18 @@ class Customer(models.Model):
     endereco = models.CharField(max_length=255,null=True)
     cep = models.CharField(max_length=10,null=True)
     pais = models.CharField(max_length=100,null=True)
-    profissionais_saude = models.ManyToManyField('ProfissionalSaude')
 
     def __str__(self):
         return self.user.first_name
 
-class ProfissionalSaude(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    is_acompanhante = models.BooleanField(default=False)
-    especialidade = models.CharField(max_length=100)
-    registro = models.CharField(max_length=20, unique=True,null=True)
+class Ingresso(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=False,null=True )
+    localizacao = models.CharField(max_length=100, null=True)  # Localização do ingresso
+    tipo = models.CharField(max_length=100, null=True)  # Tipo de ingresso
+    letra = models.CharField(max_length=10, null=True)  # Campo para letra
+    numero = models.PositiveIntegerField(null=True)  # Campo para número
+    
 
     def __str__(self):
         return self.user.first_name
     
-class Consulta(models.Model):
-    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
-    profissional_saude = models.ForeignKey('ProfissionalSaude', on_delete=models.CASCADE)
-    data = models.DateField(null=True)
-    hora = models.TimeField(null=True)
-    local = models.CharField(max_length=255,null=True)
-
-    def __str__(self):
-        return f"Consulta {self.local}"
-
-class Chat(models.Model):
-    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
-    profissionais_saude = models.ManyToManyField('ProfissionalSaude')
-    data = models.DateField(null=True)
-    hora = models.TimeField(null=True)
-    local = models.CharField(max_length=500,null=True)
-
-    def __str__(self):
-        return f"Chat {self.local}"
-    
-class Message(models.Model):
-    chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    profissionais_saude = models.ForeignKey('ProfissionalSaude', on_delete=models.CASCADE)
-    texto = models.CharField(max_length=500)
-    data = models.DateField(null=True)
-    hora = models.TimeField(null=True)
-
-    def __str__(self):
-        return f"Message {self.chat}"
-
-class Agendamento(models.Model):
-    customer = models.ForeignKey('Customer', on_delete=models.CASCADE)
-    profissional_saude = models.ForeignKey('ProfissionalSaude', on_delete=models.CASCADE, null=True)
-    data = models.DateField(null=True)
-    hora = models.TimeField(null=True)
-    local = models.CharField(max_length=255, null=True)
-
-    def __str__(self):
-        return f"Agendamento para {self.customer.user.first_name} com {self.profissional_saude.user.first_name} em {self.data} às {self.hora}"

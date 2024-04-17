@@ -6,19 +6,12 @@
         <link rel="icon" href="/../static/img/logo1.svg" size="32x32">
         <link rel="stylesheet" type="text/css" href="/../static/css/index.css?v=22">
         <link rel="stylesheet" type="text/css" href="/../static/font/font-awesome-4.7.0/css/font-awesome.min.css">    
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet" type="text/css">
-
     </head>
 
     <body>
         <!----------------------- TopBar --------------------------->
         <!-- TopBar -->
         <div id="topBar">
-            <div class='logo-Green'>
-                <a href='' target='_blank' rel='noopener noreferrer'>
-                    <img src='/../static/img/logobranco.svg' height='100%' ></img>
-                </a>
-            </div>
             <div class="perfil">
                 <div class='itemperfil'>
                     <div class="ptopco2">
@@ -43,14 +36,14 @@
                     <span class='f-13' style="padding-left: 13%;">Perfil</span>
                 </div>
             </a>
-            <form id="logoutForm" method="post" action="{% url 'logout' %}">
+            <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
-                <div class="flex1">
-                    <button type="submit" style="border: none; background: none; text-decoration: none;">
-                        <i class="action_icon fa fa-sign-out" style="font-size: 14px;" aria-hidden="true"></i>
+                <a style="text-decoration: none;" href="logout">
+                    <div class="flex1">
+                        <i class="action_icon fa fa-sign-out" style="font-size: 14px; "aria-hidden="true"></i>
                         <span class='f-13' style="padding-left: 13%;">Sair</span>
-                    </button>
-                </div>
+                    </div>
+                </a>
             </form>
         </div>
 
@@ -232,16 +225,15 @@
                         Bem Vindo, {{ paciente.email }}.
                     </div>
                     <div class='conteudoCabecalhoBem2'>
-                        Bem-vindo ao seu site de compra de ingressos.
+                        Bem-vindo ao seu site de compra de ingresso !
                     </div>
                 </div>
                 <!-- Tokens -->
                 <div class='conteudoTokens'>
-
                     <div class='conteudoTokensCards'>
                         <div class='conteudoTokensCardsCabecalho'>
                             <div class='conteudoTokensCardsCabecalhoContent'>
-                                Ingresso
+                                Compre seu ingresso.
                             </div>
                         </div>
                         <div class='conteudoTokensCardsImg'>
@@ -249,7 +241,7 @@
                         </div>
                         <div class='conteudoTokensCardsConteudo'>
                             <div class='conteudoTokensCardsConteudoContent'>
-                                Clique aqui para reservar sua vaga.
+                                Clique para comprar.
                             </div>
                         </div>
                         <div class='conteudoTokensCardsSeta'>
@@ -259,7 +251,7 @@
                     <div class='conteudoTokensCards'>
                         <div class='conteudoTokensCardsCabecalho'>
                             <div class='conteudoTokensCardsCabecalhoContent'>
-                                Ver ingressos
+                                Visualizar ingressos.
                             </div>
                         </div>
                         <div class='conteudoTokensCardsImg'>
@@ -267,7 +259,7 @@
                         </div>
                         <div class='conteudoTokensCardsConteudo'>
                             <div class='conteudoTokensCardsConteudoContent'>
-                                Clique para ver seus ingressos
+                                Veja os ingressos comprados.
                             </div>
                         </div>
                         <div class='conteudoTokensCardsSeta'>
@@ -280,10 +272,10 @@
                 <!-- Cabeçalho -->
                 <div class='conteudoCabecalho'>
                     <div class='conteudoCabecalhoBem'>
-                        Evolução e Saúde
+                        Compre seu ingresso agora !
                     </div>
                     <div class='conteudoCabecalhoBem2'>
-                            Bem-vindo ao seu site de compra de ingresso!
+                        Preencha qual tipo de ingresso você quer reservar.
                     </div>
                     <div class='conteudoCabecalhoVoltar'>
                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -294,11 +286,9 @@
             <div class='conteudoAcompanhante'>
                 <!-- Cabeçalho -->
                 <div class='conteudoCabecalho'>
-                    <div class='conteudoCabecalhoBem'>
-                        Médico Acompanhante
-                    </div>
+                    
                     <div class='conteudoCabecalhoBem2'>
-                        Este profissional irá acompanhar o seu progresso durante toda a sua evolução, aconselhando e monitorando suas atividades, consultas e exames médicos.
+                        Aqui você encontrará a lista de todos seus ingressos já comprados.
                     </div>
                     <div class='conteudoCabecalhoVoltar'>
                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -310,7 +300,7 @@
                     <div class='conteudoAcompanhanteContent'>
                         <div class='conteudoAcompanhanteContentCabecalho'>
                             <div class='conteudoTokensCardsCabecalhoContent'>
-                                Encontrar outro Acompanhante
+                                Encontrar outro ingresso.
                             </div>
                         </div>
                         <div class='conteudoAcompanhanteContentSearch'>
@@ -322,271 +312,26 @@
                     <div class='conteudoAcompanhanteContent'>
                         <div class='conteudoAcompanhanteContentCabecalho'>
                             <div class='conteudoTokensCardsCabecalhoContent'>
-                                Meu Médico Acompanhante
+                                Meus ingressos 
                             </div>
                         </div>
                         <div class='conteudoAcompanhanteContentLista'>
                             <img class="icone-perfil" src="/../static/img/avatarf.jpeg?v=1">
                             <span style="padding-left: 5px; font-family: Poppins-SemiBold, Arial, Helvetica, sans-serif;">
-                                {% for doctor in doctors %}
-                                <li>{{ doctor.nome }}</li>
-                            {% endfor %}.</span>
-                        </div>
-                        <div class='conteudoAcompanhanteContentLista'>
-                            Especialidade: Geriatria
-                        </div>
-                        <div class='conteudoAcompanhanteContentLista'>
-                            Início do Acompanhamento: 27/02/2024
-                        </div>
-                        <div class='conteudoAcompanhanteContentLista'>
-                            Avaliação: 5 Estrelas
+                            <ul>
+                                {% for ingresso in all %}
+                                    <li>{{ ingresso.localizacao }} - {{ ingresso.tipo }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
-                    <div class='conteudoAcompanhanteContent'>
-                        <div class='conteudoAcompanhanteContentCabecalho'>
-                            <div class='conteudoTokensCardsCabecalhoContent'>
-                                Agendar Consulta
-                            </div>
-                        </div>
-                        <div class='conteudoAcompanhanteContentSearch'>
-                            <div class='conteudoAcompanhanteContentSearchc'>
-                                Agendar
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='conteudoAgendamento'>
-                <!-- Cabeçalho -->
-                <div class='conteudoCabecalho'>
-                    <div class='conteudoCabecalhoBem'>
-                        Agendar Consultas e Exames Médicos
-                    </div>
-                    <div class='conteudoCabecalhoBem2'>
-                        Aqui você consegue agendar consultas e exames com diversos profissionais da saúde. Caso não tenha nenhuma solicitação encaminhe o pedido para o médico acompanhante. 
-                    </div>
-                    <div class='conteudoCabecalhoVoltar'>
-                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                        <span style="padding-left: 5px;">Menu</span>
-                    </div>
-                </div>
-                <div class='conteudoTokens'>
-                    <div class='conteudoAgendamentoContent'>
-                        <div class='conteudoAcompanhanteContentCabecalho'>
-                            <div class='conteudoTokensCardsCabecalhoContent'>
-                                Consultas e Exames Pendentes
-                            </div>
-                        </div>
-                        <div style='overflow-y:scroll; width: 100%; height: 80%'>
-                            <table class='dadoscadastros'>
-                                <thead class='dadoscadastros'>
-                                    <tr class='dadoscadastros' style='background-color:transparent'>
-                                        <th colspan='1' style='padding-left:4px;'>Consulta/Exame</th>
-                                        <th >Data do Pedido</th>
-                                        <th >Responsável</th>
-                                        <th >Agendar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutricionista</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024</td>
-                                        <td class='gestaocadastros-table-email'>Cardiologista Anderson Oliveira </td>
-                                        <td class='gestaocadastros-table-celular btn-openagend'>
-                                            <i class='fa fa-calendar-plus-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Exame de Sangue</td>
-                                        <td class='gestaocadastros-table-nome'>01/04/2024</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Fabiana Costa</td>
-                                        <td class='gestaocadastros-table-celular btn-openagend'>
-                                            <i class='fa fa-calendar-plus-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Cardiologista</td>
-                                        <td class='gestaocadastros-table-nome'>05/03/2024</td>
-                                        <td class='gestaocadastros-table-email'>Acompanhente Lucia Freitas</td>
-                                        <td class='gestaocadastros-table-celular btn-openagend'>
-                                            <i class='fa fa-calendar-plus-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>           
-                    <div class='conteudoAgendamentoContent'>
-                        <div class='conteudoAcompanhanteContentCabecalho'>
-                            <div class='conteudoTokensCardsCabecalhoContent'>
-                                Consultas e Exames Agendados
-                            </div>
-                        </div>
-                        <div style='overflow-y:scroll; width: 100%; height: 80%'>
-                            <table class='dadoscadastros'>
-                                <thead class='dadoscadastros'>
-                                    <tr class='dadoscadastros' style='background-color:transparent'>
-                                        <th colspan='1' style='padding-left:4px;'>Consulta/Exame</th>
-                                        <th >Data</th>
-                                        <th >Especialista</th>
-                                        <th >Local</th>
-                                        <th >Contato</span></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Exame de Sangue</td>
-                                        <td class='gestaocadastros-table-data'>22/04/2024 09:20:36</td>
-                                        <td class='gestaocadastros-table-email'>Clínica São Cristóvão</td>
-                                        <td class='gestaocadastros-table-email'>Av. Paulista 1542</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            <i class='fa fa-address-book-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='conteudoHistorico'>
-                <!-- Cabeçalho -->
-                <div class='conteudoCabecalho'>
-                    <div class='conteudoCabecalhoBem'>
-                        Histórico das Consultas e Exames 
-                    </div>
-                    <div class='conteudoCabecalhoBem2'>
-                        A data de início do Histórico é em 8 de Março de 2024 e a sua atividade mais recente foi em 21 de Março de 2024.
-                    </div>
-                    <div class='conteudoCabecalhoVoltar'>
-                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                        <span style="padding-left: 5px;">Menu</span>
-                    </div>
-                </div>
-                <div class='conteudoTokens'>
-                    <div class='conteudoAgendamentoContent'>
-                        <div class='conteudoAcompanhanteContentCabecalho'>
-                            <div class='conteudoTokensCardsCabecalhoContent'>
-                                Consultas
-                            </div>
-                        </div>
-                        <div style='overflow-y:scroll; width: 100%; height: 80%'>
-                            <table class='dadoscadastros'>
-                                <thead class='dadoscadastros'>
-                                    <tr class='dadoscadastros' style='background-color:transparent'>
-                                        <th colspan='1' style='padding-left:4px;'>Consulta</th>
-                                        <th >Data</th>
-                                        <th >Especialista</th>
-                                        <th >Local</th>
-                                        <th >Documentos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            2 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            1 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            3 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            0 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            2 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            2 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            2 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class='conteudoAgendamentoContent'>
-                        <div class='conteudoAcompanhanteContentCabecalho'>
-                            <div class='conteudoTokensCardsCabecalhoContent'>
-                                Exames
-                            </div>
-                        </div>
-                        <div style='overflow-y:scroll; width: 100%; height: 80%'>
-                            <table class='dadoscadastros'>
-                            <thead class='dadoscadastros'>
-                                    <tr class='dadoscadastros' style='background-color:transparent'>
-                                        <th colspan='1' style='padding-left:4px;'>Consulta</th>
-                                        <th >Data</th>
-                                        <th >Especialista</th>
-                                        <th >Local</th>
-                                        <th >Documentos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class='dadoscadastros'>
-                                        <td class='gestaocadastros-table-qtd'>Nutrição</td>
-                                        <td class='gestaocadastros-table-nome'>06/04/2024 09:20:15</td>
-                                        <td class='gestaocadastros-table-email'>Nutricionista Anderson Silva</td>
-                                        <td class='gestaocadastros-table-email'>Clínica Av. Paulista 1954</td>
-                                        <td class='gestaocadastros-table-celular'>
-                                            2 <i class='fa fa-file-text-o' aria-hidden='true'></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
         </div>
 
             <!-- Perfil -->
-
 
         <!-- Layer cinza -->
         <div class='mensagem hidden'>
@@ -640,25 +385,16 @@
         var conteudo = document.querySelector('.conteudo');
         var conteudoEvolucao = document.querySelector('.conteudoEvolucao');
         var conteudoAcompanhante = document.querySelector('.conteudoAcompanhante');
-        var conteudoAgendamento = document.querySelector('.conteudoAgendamento');
-        var conteudoHistorico = document.querySelector('.conteudoHistorico');
-        var conteudoChat = document.querySelector('.conteudoChat');
 
         conteudo.style.top = '0%';
         conteudoEvolucao.style.top = '100%';
         conteudoAcompanhante.style.top = '100%';
-        conteudoAgendamento.style.top = '100%';
-        conteudoHistorico.style.top = '100%';
-        conteudoChat.style.top = '100%';
 
         for (var i = 0; i < conteudoCabecalhoVoltar.length; i++) {
             conteudoCabecalhoVoltar[i].addEventListener('click', function() {
                 conteudo.style.top = '0%';
                 conteudoEvolucao.style.top = '100%';
                 conteudoAcompanhante.style.top = '100%';
-                conteudoAgendamento.style.top = '100%';
-                conteudoHistorico.style.top = '100%';
-                conteudoChat.style.top = '100%';
             });
         }
         for (var i = 0; i < elements.length; i++) {
@@ -666,23 +402,11 @@
                 conteudo.style.top = '-100%';
                 conteudoEvolucao.style.top = '100%';
                 conteudoAcompanhante.style.top = '100%';
-                conteudoAgendamento.style.top = '100%';
-                conteudoHistorico.style.top = '100%';
-                conteudoChat.style.top = '100%';
                 if (Array.from(elements).indexOf(this) === 0) {
                     conteudoEvolucao.style.top = '0%';
                 }
                 else if (Array.from(elements).indexOf(this) === 1) {
                     conteudoAcompanhante.style.top = '0%';
-                }
-                else if (Array.from(elements).indexOf(this) === 2) {
-                    conteudoAgendamento.style.top = '0%';
-                }
-                else if (Array.from(elements).indexOf(this) === 3) {
-                    conteudoHistorico.style.top = '0%';
-                }
-                else if (Array.from(elements).indexOf(this) === 4) {
-                    conteudoChat.style.top = '0%';
                 }
             });
         }

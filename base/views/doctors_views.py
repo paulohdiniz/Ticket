@@ -4,8 +4,8 @@ from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 
-from base.models import ProfissionalSaude, Customer
-from ..forms import CustomerSignUpForm, DoctorSignUpForm, FormLogin
+from base.models import Ingresso, Customer
+from ..forms import CustomerSignUpForm, FormLogin
 from ..models import User
 
 class CustomerSignUpView(CreateView):
@@ -21,21 +21,6 @@ class CustomerSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('/')
-
-class DoctorSignUpView(CreateView):
-    model = User
-    form_class = DoctorSignUpForm
-    template_name = 'signup_form.html'
-
-    def get_context_data(self, **kwargs):
-        kwargs['user_type'] = 'profissionalsaude'
-        return super().get_context_data(**kwargs)
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('/')
-
 
 def custom_login(request):
     if request.method == 'POST':

@@ -86,7 +86,7 @@ WSGI_APPLICATION = "FitSenior.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'FitSenior', 
+        'NAME': 'Ticket', 
         'USER': 'paulohd',
         'PASSWORD': 'paulohd',
         'HOST': 'localhost', 

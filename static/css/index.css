@@ -1212,3 +1212,8 @@ table {
     color: #1B244C;
     width: 60%;
 }
+
+
+#tipo_ingresso_label {
+    color: black;
+}
